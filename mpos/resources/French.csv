@@ -1,0 +1,92 @@
+Language,Française.csv
+From,Française.csv
+1,Point de vente
+2,les records de vente
+3,Inventaire
+4,préférences
+5,Ajouter un produit
+6,Nom du produit
+7,Prix
+8,Ajouter Fail produit!
+9,Vous devez entrer le nom de l'article et le prix.
+10,Double-cliquez pour Sélectionnez Date
+11,Vous devez sélectionner une date valide.
+12,Sélectionnez Date Fail
+13,Modifier les informations produit
+14,Modifier Produit Fail
+15,Ajouter les articles à la réception
+16,quantité
+17,Product ID
+18,produit
+19,ID
+20,Qt.
+21,montant
+22,ID vente
+23,date de
+24,Montant total
+25,Quitter le programme
+26,Paramètres du programme
+27,options de langue
+28,À propos
+29,fichier
+30,Modifier
+31,Aide
+32,gestion des stocks
+33,Rechercher
+34,Détails du produit
+35,options d'inventaire
+36,réception
+37,Résumé des ventes
+38,sous-total
+39,total des
+40,la taxe de vente
+41,Transaction complète
+42,Annuler
+43,Vous devez saisir une quantité et le prix.
+44,Transaction complète Fail
+45,Vous devez ajouter des éléments d'abord!
+46,Nombre de réception
+47,Modifier la réception
+48,Période de vente des dossiers
+49,Réception enregistrement Vente
+50,Choisissez période de vente
+51,jour
+52,Semaine
+53,mois
+54,Année
+55,date de début
+56,date de fin
+57,Vente de produits Résumé
+58,Date de début Sélectionnez
+59,personnalisé
+60,Date de début ne peut pas être postérieure à la date de fin.
+61,Choix de la date Fail
+62,Date de fin Sélectionner
+63,Langue
+64,Symbole monétaire
+65,Décimales devises
+66,Séparateur de milliers
+67,Taux de taxe de vente
+68,Etes-vous sûr de vouloir réinitialiser la base de données?
+69,Modifier langue
+70,Ajouter une langue
+71,options de langue
+72,Nom de la langue Nouveau
+73,De
+74,Langue existe déjà!
+75,Vous devez entrer un nom de langue.
+76,Nom Fail
+77,Retour
+78,Suivant
+79,Enregistrer
+80,page
+81,Produit en vrac
+82,Réinitialiser la base de données
+83,Redémarrez le Programme
+84,
+85,
+86,
+87,
+88,
+89,
+90,

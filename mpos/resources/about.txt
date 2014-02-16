@@ -1,0 +1,11 @@
+This program is part of the Public Domain.
+
+miniPOS was created with Python 2.7 and wxPython2.8. For installation or other help, please refer to the miniPOS_DOC.txt and PDF files in the doc folder. For source code, please visit < sourceforge.net/p/minipos/code >
+
+miniPOS is designed to be a simple program for small businesses to track sales information. It is ideal for businesses with limited computer experience. The extensive language controls allow the users to add and edit languages.
+
+miniPOS is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+miniPOS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.

@@ -1,0 +1,92 @@
+Language,English.csv
+From,English.csv
+1,Point of Sale
+2,Sale Records
+3,Inventory
+4,Preferences
+5,Add Product
+6,Product Name
+7,Price
+8,Add Product Fail!
+9,You must enter the item name and price.
+10,Double Click to Select Date
+11,You must select a valid date.
+12,Date Select Fail
+13,Edit Product Information
+14,Edit Product Fail
+15,Add Items to Receipt
+16,Quantity
+17,Product ID
+18,Product  
+19,ID
+20,Qt.
+21,Amount
+22,Sale ID
+23,Date  
+24,Total Amount
+25,Exit Program
+26,Program Settings
+27,Language Options
+28,About
+29,File
+30,Edit  
+31,Help
+32,Inventory Management
+33,Search
+34,Product Details
+35,Inventory Options
+36,Receipt
+37,Sales Summary
+38,Sub Total
+39,Total  
+40,Sales Tax
+41,Complete Transaction
+42,Cancel
+43,You must enter a quantity and price.
+44,Complete Transaction Fail
+45,You must add items first!
+46,Receipt Number
+47,Edit Receipt
+48,Period Sales Records
+49,Sale Record Receipt
+50,Choose Sale Period
+51,Day
+52,Week
+53,Month
+54,Year
+55,Start Date
+56,End Date
+57,Product Sales Summary
+58,Start Date Select
+59,Custom
+60,Start Date cannot be later than End Date.
+61,Date Selection Fail
+62,End Date Select
+63,Language  
+64,Currency Symbol
+65,Currency Decimals
+66,Thousands Separator
+67,Sales Tax Rate
+68,Are you sure you want to reset the database?
+69,Edit Language
+70,Add Language
+71,Language Options
+72,New Language Name
+73,From
+74,Language already exists!
+75,You must enter a language name.
+76,Name Fail
+77,Back
+78,Next
+79,Save
+80,Page
+81,Bulk Item
+82,Reset Database
+83,Restart Program
+84,
+85,
+86,
+87,
+88,
+89,
+90,

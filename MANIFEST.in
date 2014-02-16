@@ -1,0 +1,6 @@
+recursive-include mpos/resources *
+recursive-include doc/*
+include README.txt
+include COPYING.txt
+include ez_setup.py
+include mini_pos.py

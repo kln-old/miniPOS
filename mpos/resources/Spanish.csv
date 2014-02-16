@@ -1,0 +1,92 @@
+Language,Español.csv
+From,Español.csv
+1,Punto de Venta
+2,Registros de venta
+3,inventario
+4,preferencias
+5,Añadir producto
+6,Nombre del producto
+7,precio
+8,Añadir producto falla!
+9,Debe introducir el nombre del artículo y el precio.
+10,Haga doble clic en el botón de fecha
+11,Debe seleccionar una fecha válida.
+12,Seleccione la fecha de fallo
+13,Editar información del producto
+14,Editar producto no
+15,Agregar artículos a la recepción
+16,cantidad
+17,identificación del producto
+18,producto
+19,identificación
+20,Qt.
+21,cantidad
+22,venta ID
+23,fecha
+24,Monto total de
+25,salir del programa
+26,Configuración del programa
+27,Opciones de idioma
+28,sobre
+29,expediente
+30,editar
+31,ayuda
+32,Gestión de inventario
+33,búsqueda
+34,Detalles del Producto
+35,Opciones de inventario
+36,recibo
+37,Resumen de ventas
+38,sub Total
+39,total
+40,impuesto de venta
+41,transacción completa
+42,cancelar
+43,Debe introducir una cantidad y precio.
+44,Transacción completa Fail
+45,Debe agregar artículos primero!
+46,número de recibo
+47,edición de recibos
+48,Historiales de ventas periodo
+49,Recibo de venta récord
+50,Elija Período de Venta
+51,día
+52,semana
+53,mes
+54,año
+55,Fecha de inicio
+56,Fecha de finalización
+57,Resumen de las ventas de productos
+58,Fecha de inicio Seleccione
+59,costumbre
+60,Fecha de inicio no puede ser posterior a la fecha de finalización.
+61,Fecha de selección Fail
+62,Fecha de finalización Seleccione
+63,lengua
+64,símbolo de moneda
+65,decimales de moneda
+66,Separador de miles
+67,Tasa del impuesto de ventas
+68,¿Seguro de que desea restablecer la base de datos?
+69,editar Idioma
+70,Agregar idioma
+71,Opciones de idioma
+72,Nombre nuevo idioma
+73,de
+74,Idioma ya existe!
+75,Debe introducir un nombre de idioma.
+76,nombre Fail
+77,de nuevo
+78,próximo
+79,ahorrar
+80,página
+81,Artículo granel
+82,restablecer la base de datos
+83,reiniciar el programa
+84,
+85,
+86,
+87,
+88,
+89,
+90,
