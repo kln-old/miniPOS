@@ -30,25 +30,29 @@ class ProductLC(wx.ListCtrl):
     def __init__(self, parent, *args, **kwargs):
         super(ProductLC, self).__init__(parent, *args, **kwargs)
         
-        self.w1 = 'Product Id'
+        self.w1 = 'ID'
         self.w2 = 'Product'
-        self.w3 = 'Price'
-        self.Language()
+	self.w3 = 'Barcode'
+        self.w4 = 'Price'
+        #self.Language()
         
         self.InsertColumn(0, self.w1)
-        self.SetColumnWidth(0, 100)
+        self.SetColumnWidth(0, 50)
         
         self.InsertColumn(1, self.w2)
         self.SetColumnWidth(1, 250)
         
         self.InsertColumn(2, self.w3)
-        self.SetColumnWidth(2, 200)    #Sets width to end of ListCtrl
+        self.SetColumnWidth(2, 250)
+        
+        self.InsertColumn(3, self.w4)
+        self.SetColumnWidth(3, 200)    #Sets width to end of ListCtrl
         
     def Language(self):
         'Sets the Language.'
         ids = 17, 18, 7
         words = mpos_utility.lang(ids)
-        self.w1, self.w2, self.w3 = words
+        self.w1, self.w2, self.w4 = words
 
 ###########################################################################
 

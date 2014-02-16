@@ -110,6 +110,17 @@ class Inventory_Panel(wx.Panel):
         dbox2.Add(self.item_label, 0, wx.RIGHT|wx.TOP, 7)
         dbox2.Add(self.item, 1)
         rbox1.Add(dbox2, 0, wx.EXPAND|wx.TOP|wx.RIGHT|wx.LEFT, 10)
+
+        #--#
+        dbox5 = wx.BoxSizer(wx.HORIZONTAL)
+        self.barcode_label = wx.StaticText(self, -1, 'Barcode', size=(180, -1))
+        self.barcode_label.SetFont(font_2)
+        self.barcode = wx.TextCtrl(self, -1, size = (200, -1),
+                                     style=wx.TE_READONLY|wx.TE_CENTER)
+        self.barcode.SetFont(font_4)
+        dbox5.Add(self.barcode_label, 0, wx.RIGHT|wx.TOP, 7)
+        dbox5.Add(self.barcode, 1)
+        rbox1.Add(dbox5, 0, wx.EXPAND|wx.TOP|wx.RIGHT|wx.LEFT, 10)
         
         #--#
         dbox3 = wx.BoxSizer(wx.HORIZONTAL)
@@ -208,9 +219,10 @@ class Inventory_Panel(wx.Panel):
         for i in range(0, len(self.product_table)):
             self.product_lc.InsertStringItem(i, str(self.product_table[i][0]))
             self.product_lc.SetStringItem(i, 1, self.product_table[i][1])
+            self.product_lc.SetStringItem(i, 2, self.product_table[i][2])
             ins = '%s %.'+str(self.c_dec)+'f'
-            rslt = ins % (self.c_symbol, self.product_table[i][2])
-            self.product_lc.SetStringItem(i, 2, rslt)
+            rslt = ins % (self.c_symbol, self.product_table[i][3])
+            self.product_lc.SetStringItem(i, 3, rslt)
             if i % 2 == 0:
                 self.product_lc.SetItemBackgroundColour(i, wx.LIGHT_GREY)
         self.product_lc.Select(0, 0)
@@ -219,7 +231,7 @@ class Inventory_Panel(wx.Panel):
     def OnSelect(self, evt):
         self.row = self.product_lc.GetFocusedItem()
         self.selected_info = []
-        for column in range(3):
+        for column in range(4):
             item = self.product_lc.GetItem(self.row, column)
             self.selected_info.append(item.GetText())
         # Find out if the product is sold in bulk
@@ -232,7 +244,8 @@ class Inventory_Panel(wx.Panel):
         # Put the info into the Product Information panel
         self.id_number.SetValue(self.selected_info[0])
         self.item.SetValue(self.selected_info[1])
-        self.price.SetValue(self.selected_info[2])
+        self.barcode.SetValue(self.selected_info[2])
+        self.price.SetValue(self.selected_info[3])
         
     #----------------------------------------------------------------------
     def OnEdit(self, evt):
@@ -245,14 +258,14 @@ class Inventory_Panel(wx.Panel):
         self.row = self.product_lc.GetFocusedItem()
         if self.row == -1: self.row = 0
         self.selected_info = []
-        for column in range(3):
+        for column in range(4):
             item = self.product_lc.GetItem(self.row, column)
             self.selected_info.append(item.GetText())
-        price = self.selected_info[2]
+        price = self.selected_info[3]
         
         sp_index = price.index(' ')
         price = price[sp_index+1:]
-        self.selected_info[2] = price
+        self.selected_info[3] = price
         
         # Get the bulk boolean from the database
         bulk = self.db.GetBulk(self.selected_info[0])
@@ -269,6 +282,7 @@ class Inventory_Panel(wx.Panel):
                 self.selected_info[1] = self.new_info[0]
                 self.selected_info[2] = self.new_info[1]
                 self.selected_info[3] = self.new_info[2]
+                self.selected_info[4] = self.new_info[3]
                 # print self.selected_info
                 self.db.EditProduct(self.selected_info)
         self.search_bar.SetValue('')
@@ -307,10 +321,11 @@ class Inventory_Panel(wx.Panel):
             for i in range(0, len(self.product_table)):
                 self.product_lc.InsertStringItem(i, str(self.product_table[i][0]))
                 self.product_lc.SetStringItem(i, 1, self.product_table[i][1])
+                self.product_lc.SetStringItem(i, 2, self.product_table[i][2])
                 
                 ins = '%s %.'+str(self.c_dec)+'f'
-                rslt = ins % (self.c_symbol, self.product_table[i][2])
-                self.product_lc.SetStringItem(i, 2, rslt)
+                rslt = ins % (self.c_symbol, self.product_table[i][3])
+                self.product_lc.SetStringItem(i, 3, rslt)
                 
                 if i % 2 == 0:
                     self.product_lc.SetItemBackgroundColour(i, wx.LIGHT_GREY)

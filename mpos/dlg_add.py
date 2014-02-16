@@ -63,6 +63,16 @@ class AddDlg(wx.Dialog):
         sizer.Add(hbox2, 0, wx.EXPAND|wx.ALL, 10)
         
         #--#
+        hbox6 = wx.BoxSizer(wx.HORIZONTAL)
+        self.barcode_label = wx.StaticText(self, -1, 'Barcode', 
+                                        size=(130, -1))
+        self.barcode_label.SetFont(font2)
+        self.barcode_input = wx.TextCtrl(self, -1, style=wx.TE_CENTER)
+        hbox6.Add(self.barcode_label, 0, wx.TOP|wx.RIGHT, 5)
+        hbox6.Add(self.barcode_input, 1)
+        sizer.Add(hbox6, 0, wx.EXPAND|wx.ALL, 10)
+        
+	#--#
         hbox3 = wx.BoxSizer(wx.HORIZONTAL)
         self.price_label = wx.StaticText(self, -1, 
                                          '-' +' ('+self.c_symbol+')',
@@ -112,13 +122,14 @@ class AddDlg(wx.Dialog):
     def AddGetVals(self):
         'Gets Values from the dlg input TextCtrls'
         item = self.item_input.GetValue().strip()
+	barcode = self.barcode_input.GetValue().strip()
         price = self.price_input.GetValue()
         if self.bulk.GetValue():
             bulk = 1
         else:
             bulk = 0
         if item and self.numCheck(price):
-            return [item, price, bulk]
+            return [item, barcode, price, bulk]
         else:
             self.m1 = 'You must enter the item name and price'
             self.t1 = 'Add Product Fail!'

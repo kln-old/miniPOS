@@ -67,6 +67,16 @@ class EditDlg(wx.Dialog):
         hbox2.Add(self.item_label, 0, wx.RIGHT|wx.TOP, 5)
         hbox2.Add(self.item_input, 1)
         sizer.Add(hbox2, 0, wx.EXPAND|wx.ALL, 10)
+ 
+        #--#
+        hbox6 = wx.BoxSizer(wx.HORIZONTAL)
+        self.barcode_label = wx.StaticText(self, -1, 'Barcode',
+                                        size=(130, -1))
+        self.barcode_label.SetFont(font_2)
+        self.barcode_input = wx.TextCtrl(self, -1, style=wx.TE_CENTER)
+        hbox6.Add(self.barcode_label, 0, wx.RIGHT|wx.TOP, 5)
+        hbox6.Add(self.barcode_input, 1)
+        sizer.Add(hbox6, 0, wx.EXPAND|wx.ALL, 10)
         
         #--#
         hbox3 = wx.BoxSizer(wx.HORIZONTAL)
@@ -104,8 +114,9 @@ class EditDlg(wx.Dialog):
     def SetValues(self, info_list):
         'Takes values from the selected item and puts them in the input fields'
         self.item_input.SetValue(info_list[1])
-        self.price_input.SetValue(info_list[2])
-        if info_list[3] == 1:
+	self.barcode_input.SetValue(info_list[2])
+        self.price_input.SetValue(info_list[3])
+        if info_list[4] == 1:
             self.bulk.SetValue(True)
         else:
             self.bulk.SetValue(False)
@@ -126,13 +137,14 @@ class EditDlg(wx.Dialog):
     def GetValues(self):
         'Gets Values from the dlg input TextCtrls'
         item = self.item_input.GetValue().strip()
+	barcode = self.barcode_input.GetValue().strip()
         price = self.price_input.GetValue()
         if self.bulk.GetValue():
             bulk = 1
         else:
             bulk = 0
         if item and self.numCheck(price):
-            return [item, price, bulk]
+            return [item, barcode, price, bulk]
         else:
             self.m1 = '-'
             self.t1 = '-'

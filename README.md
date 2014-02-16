@@ -9,6 +9,7 @@ This is a fork of the original project at http://sourceforge.net/projects/minipo
 
 Program: miniPOS 1.1
 Author: Gregory Wilson
+Update: Nitheesh K L
 
 miniPOS os part of the Public Domain
 
@@ -29,4 +30,8 @@ miniPOS 1.1
 * Changed build to include C++ Redistributable Binaries for 
 the .exe builds
 
+miniPOS 1.1
+2/16/2014
+kln
 
+* added barcode entry for the products

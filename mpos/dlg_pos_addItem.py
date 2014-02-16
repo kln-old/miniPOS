@@ -107,7 +107,7 @@ class POS_AddItem(wx.Dialog):
         self.item_id = info_list[0]
         self.item_label.SetValue(info_list[1])
         ins = '%.'+self.c_dec+'f'
-        rslt = ins % (info_list[2])
+        rslt = ins % (info_list[3])
         self.pr_input.SetValue(rslt)
         self.qt_input.SetValue('1')
         self.qt_input.SetInsertionPointEnd()
