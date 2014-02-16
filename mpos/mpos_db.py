@@ -55,13 +55,13 @@ class MPOS_DB(object):
     #######################################################################
     def AddProduct(self, info_list):
         'Takes input from Invetory => Add Item and adds it to the database'
-        item, price, bulk = info_list
-        values = (item, price, bulk)
+        item, barcode, price, bulk = info_list
+        values = (item, barcode, price, bulk)
         self.curs = self.conn.cursor()
         try:
             self.curs.execute('''
-                          INSERT INTO products (productName, productPrice, 
-                            bulk) VALUES (?, ?, ?);''', values)
+                          INSERT INTO products (productName, productCode, productPrice, 
+                            bulk) VALUES (?, ?, ?, ?);''', values)
         except sqlite3.OperationalError:
             wx.MessageBox('''miniPOS is installed in a read-only directory!
 Try reinstalling in a different directory.''', 
@@ -73,11 +73,12 @@ Try reinstalling in a different directory.''',
         'Takes input from Inventory => Edit Item and updates the database.'
         id = int(info_list[0])
         name = info_list[1]
-        price = self._PriceRestore(info_list[2])
-        bulk = info_list[3]
-        values = (name, price, bulk, id)
+	barcode = info_list[2]
+        price = self._PriceRestore(info_list[3])
+        bulk = info_list[4]
+        values = (name, barcode, price, bulk, id)
         sql = '''UPDATE products
-                SET productName = ?, productPrice = ?, bulk = ? 
+                SET productName = ?, productCode = ?, productPrice = ?, bulk = ? 
                 WHERE productId = ?'''
         self.curs = self.conn.cursor()
         try:
@@ -107,9 +108,11 @@ Try reinstalling in a different directory.''',
     def productSearch(self, term_list):
         # Create a dynamic where condition
         where_stmt = "WHERE productName LIKE " + term_list[0] + ' '
+	where_stmt += "OR productCode LIKE " + term_list[0] + ' '
         for term in term_list:
             if term_list.index(term) != 0:
                 where_stmt += "OR productName LIKE " + term + " "
+            	where_stmt += "OR productCode LIKE " + term + " "
             where_stmt += "OR productId LIKE " + term + " "
             where_stmt += "OR productPrice LIKE " + term + " "
         
@@ -129,9 +132,11 @@ Try reinstalling in a different directory.''',
         'This is used by the sales panel to search for product records within\
             the specified dates.'
         where_stmt = "products.productName LIKE " + term_list[0] + ' '
+	where_stmt += "OR products.productCode LIKE " + term_list[0] + " "
         for term in term_list:
             if term_list.index(term) != 0:
                 where_stmt += "OR products.productName LIKE " + term + " "
+                where_stmt += "OR products.productCode LIKE " + term + " "
             where_stmt += "OR products.productId LIKE " + term + " "
             where_stmt += "OR products.productPrice LIKE " + term + " "
             
@@ -193,7 +198,7 @@ Try reinstalling in a different directory.''',
     
     #----------------------------------------------------------------------
     def GetItemId(self, productName):
-        'Given a productName, returns the product\s bulk status'
+        'Given a productName, returns the product\s bulk status. kln: returns productID not bulk'
         sql = '''SELECT productId FROM products WHERE productName = ?;'''
         self.curs = self.conn.cursor()
         self.curs.execute(sql, (productName, ))

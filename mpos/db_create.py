@@ -46,6 +46,7 @@ def DBCreate():
                        CREATE TABLE products (
                         productId       INTEGER PRIMARY KEY,
                         productName     TEXT,
+                        productCode     TEXT,
                         productPrice    REAL, 
                         bulk            INTEGER
                         );''')

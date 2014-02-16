@@ -219,9 +219,10 @@ class POS_Panel(wx.Panel):
             
             self.product_lc.InsertStringItem(i, str(self.product_table[i][0]))
             self.product_lc.SetStringItem(i, 1, self.product_table[i][1])
+            self.product_lc.SetStringItem(i, 2, self.product_table[i][2])
             ins = '%s %.'+str(self.c_dec)+'f'
-            rslt = ins % (self.c_symbol, self.product_table[i][2])
-            self.product_lc.SetStringItem(i, 2, rslt)
+            rslt = ins % (self.c_symbol, self.product_table[i][3])
+            self.product_lc.SetStringItem(i, 3, rslt)
             if i % 2 == 0:
                 self.product_lc.SetItemBackgroundColour(i, wx.LIGHT_GREY)
         
@@ -259,10 +260,11 @@ class POS_Panel(wx.Panel):
             for i in range(0, len(self.product_table)):
                 self.product_lc.InsertStringItem(i, str(self.product_table[i][0]))
                 self.product_lc.SetStringItem(i, 1, self.product_table[i][1])
+                self.product_lc.SetStringItem(i, 2, self.product_table[i][2])
                 
                 ins = '%s %.'+str(self.c_dec)+'f'
-                rslt = ins % (self.c_symbol, self.product_table[i][2])
-                self.product_lc.SetStringItem(i, 2, rslt)
+                rslt = ins % (self.c_symbol, self.product_table[i][3])
+                self.product_lc.SetStringItem(i, 3, rslt)
                 
                 if i % 2 == 0:
                     self.product_lc.SetItemBackgroundColour(i, wx.LIGHT_GREY)
@@ -279,11 +281,11 @@ class POS_Panel(wx.Panel):
         # Get the info from the highlighted Item
         self.row = self.product_lc.GetFocusedItem()
         self.selected_info = []
-        for column in range(3):
+        for column in range(4):
             item = self.product_lc.GetItem(self.row, column)
             self.selected_info.append(item.GetText())
         # Extract the float from the price column to pass
-        self.selected_info[2] = float(((self.selected_info[2]).split(' '))[-1])
+        self.selected_info[3] = float(((self.selected_info[3]).split(' '))[-1])
         # Set the info for the dlg
         dlg.SetInfo(self.selected_info)
         rslt = dlg.ShowModal()

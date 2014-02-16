@@ -698,7 +698,7 @@ class Sales_Panel(wx.Panel):
             return False
         sale_num = self.sales_lc.GetItem(x, 0).GetText()
         sale_date = self.sales_lc.GetItem(x, 1).GetText()
-        output = '<h1> miniPOS - Receipt # '+sale_num+'</h1>'
+        output = '<h1> KLN miniPOS - Receipt # '+sale_num+'</h1>'
         output += '<p>' + sale_date + '</p>'
         output += '<p>'+(75 * '-')+'</p>'
         

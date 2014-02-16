@@ -29,7 +29,7 @@ class AboutDlg(wx.Dialog):
         super(AboutDlg, self).__init__(parent, *args, **kwargs)
         
         font1 = wx.Font(20, wx.SWISS, wx.NORMAL, wx.NORMAL)
-        font2 = wx.Font(15, wx.SWISS, wx.NORMAL, wx.NORMAL)
+        font2 = wx.Font(10, wx.SWISS, wx.NORMAL, wx.NORMAL)
         
         # Box Sizer
         #------------------------------------------------------------------
@@ -44,15 +44,19 @@ class AboutDlg(wx.Dialog):
         sizer.Add(wx.StaticLine(self, -1), 0, wx.EXPAND|wx.LEFT|wx.RIGHT, 10)
         
         # Credits
-        cred_txt = 'Author: Gregory Wilson, 2011'
+        cred_txt = 'Author: Gregory Wilson, 2011\nUpdate: Nitheesh K L, 2014'
         self.cred = wx.StaticText(self, -1, cred_txt)
         self.cred.SetFont(font2)
         sizer.Add(self.cred, 0, wx.ALIGN_CENTER|wx.ALL, 20)
-        
+ 
         # Contact
-        contact = 'gwilson.sq1@gmail.com'
+        contact = 'gwilson.sq1@gmail.com\nnitheeshkl@gmail.com'
         self.contact = wx.StaticText(self, -1, contact)
         sizer.Add(self.contact, 0, wx.ALIGN_CENTER|wx.BOTTOM, 20)
+ 
+#        contact = 'nitheeshkl@gmail.com'
+#        self.contact = wx.StaticText(self, -1, contact)
+#        sizer.Add(self.contact, 0, wx.ALIGN_CENTER|wx.BOTTOM, 20)
         
         #--#
         sizer.Add(wx.StaticLine(self, -1), 0, wx.EXPAND|wx.LEFT|wx.RIGHT, 10)
