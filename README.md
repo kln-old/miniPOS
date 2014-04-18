@@ -31,7 +31,8 @@ miniPOS 1.1
 the .exe builds
 
 miniPOS 1.1
-2/16/2014
+4/16/2014
 kln
 
 * added barcode entry for the products
+* added printer support for thermal receipt printer with pycups
