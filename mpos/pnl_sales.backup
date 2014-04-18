@@ -698,58 +698,32 @@ class Sales_Panel(wx.Panel):
             return False
         sale_num = self.sales_lc.GetItem(x, 0).GetText()
         sale_date = self.sales_lc.GetItem(x, 1).GetText()
-	#output = '<html><style>@page{ margin: 0cm;}</style><body>'
-	output="""
-	<html>
-	<style>
-	@page {
-	margin: 0cm;
-	margin-bottom: 2.5cm;
-	}
-	</style>
-	<body>
-	"""
-	output += '<p>'
-	output += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-	output += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-	output += '<b>SKANDA</b><br>'
-	output += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-	output += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-	output += 'CASH BILL<br>'
-	output += '<b> Jayanagar Home Needs </b><br>'
-	output += '#266,5th main, 4th block<br>'
-	output += 'Jayanagar, Bangalore 560011<br>'
-	output += '(Tel): 080-22458038<br>'
-	output += '(Mob): +91-9341230258<br>'
-	output += 'TIN: 29690210850</p>'
-        output += '' + sale_date + ''
-        #output += ' ' + (75 * '-')+'<br/>'
+        output = '<h1> KLN miniPOS - Receipt # '+sale_num+'</h1>'
+        output += '<p>' + sale_date + '</p>'
+        output += '<p>'+(75 * '-')+'</p>'
         
         # Get Receipt Items and add to output
         row_count = self.receipt_lc.GetItemCount()
         receipt_list = []
         for i in range(row_count):
             item = []
-            item.append(''+self.receipt_lc.GetItem(i, 0).GetText())
-            item.append(''+self.receipt_lc.GetItem(i, 1).GetText())
-            item.append(' * '+self.receipt_lc.GetItem(i, 2).GetText())
-            item.append('='+self.receipt_lc.GetItem(i, 3).GetText())
+            item.append('|'+self.receipt_lc.GetItem(i, 0).GetText())
+            item.append('|'+self.receipt_lc.GetItem(i, 1).GetText())
+            item.append('|'+self.receipt_lc.GetItem(i, 2).GetText())
+            item.append('|'+self.receipt_lc.GetItem(i, 3).GetText())
             receipt_list.append(item)
-        
-	output +='<p style="margin-left:0;">'
+         
         # Add Labels
-        labels = 'Item', 'Price', ' * Qty', 'Amt'
-        output += '<b>'+self.FormatReceiptItem(labels)+'</b>'
-        #output += self.FormatReceiptItem(labels)
-        #output += '<p>'+(75 * '=')+'</p>'
+        labels = '|Item Name', '|Price', '|QUANTITY', '|AMOUNT'
+        output += '<p>'+self.FormatReceiptItem(labels)+'</p>'
+        output += '<p>'+(75 * '=')+'</p>'
         
         # Add Items
         for item in receipt_list:
-            output += self.FormatReceiptItem(item)
+            output += '<p>'+self.FormatReceiptItem(item)+'</p>'
         
-        output += (50 * '=')
-        output += '<br>'
-
+        output += '<p>'+(75 * '=')+'</p>'
+        
         # Calculate subtotal, tax and total
         sub_total = self.CalculateSubTotal(receipt_list)
         total = float(self.sales_lc.GetItem(x, 2).GetText().split(' ')[-1])
@@ -759,69 +733,26 @@ class Sales_Panel(wx.Panel):
         tax = self.FormatCurrency(tax)
         total = self.FormatCurrency(total)
         # Put the subtotal, tax and total on the receipt
-        output += '<b>'+'Sub-Total =     '+sub_total+'</b><br>'
-        output += '<b>'+'Sales Tax =     '+tax+'</b><br>'
-        #output += '<p><pre><b>'+(35*' ')+(40*'-')+'</b></pre></p>'
-        output += '<b>'+'Total     =     '+total+'</b>'
+        output += '<p><pre><b>'+(35*' ')+'Sub-Total >     '+sub_total+'</b></pre></p>'
+        output += '<p><pre><b>'+(35*' ')+'Sales Tax >     '+tax+'</b></pre></p>'
+        output += '<p><pre><b>'+(35*' ')+(40*'-')+'</b></pre></p>'
+        output += '<p><pre><b>'+(35*' ')+'Total     >     '+total+'</b></pre></p>'
         
-	#output += '</p>'
-	output += '</p>Thankyou | Visit Again</body></html>'
-	print output
-        #self.printer = mpos_print.Printer()
-        #self.printer.PreviewText(output, '')
-        self.printer = mpos_print.PrinterCups()
-        self.printer.PrintText(output, '')
+        self.printer = mpos_print.Printer()
+        self.printer.PreviewText(output, '')
         
     #----------------------------------------------------------------------
     def FormatReceiptItem(self, receipt_item):
         "Takes a tuple from the receipt list control and formats for printing."
-        # [itm_name, price, qty, amnt]
-	col_widths = 35, 25, 25, 15
+        col_widths = 35, 15, 10, 15
         output = ''
-
-	#item name
-	i = 0
-	if len(receipt_item[i]) < col_widths[i]:
-		output += receipt_item[i] + (col_widths[i]-len(receipt_item[i]))*'.'
-	else:
-		output += receipt_item[i][:col_widths[i]]
-	
-	# amount
-	i = 3
-	if len(receipt_item[i]) < col_widths[i]:
-		output += (col_widths[i]-len(receipt_item[i]))*'.' + receipt_item[i]
-	else:
-		output += receipt_item[i][:col_widths[i]]
-	
-	# move to next line
-	output += "<br>"
-	
-	# price 
-	i = 1
-	if len(receipt_item[i]) < col_widths[i]:
-		output += receipt_item[i] #+ ((col_widths[i]-len(receipt_item[i]))/2)*'.'
-	else:
-		output += receipt_item[i][:col_widths[i]]
-
-	# quantity
-	i = 2
-	if len(receipt_item[i]) < col_widths[i]:
-		output += receipt_item[i] #+ (col_widths[i]-len(receipt_item[i]))*'.'
-	else:
-		output += receipt_item[i][:col_widths[i]]
-
-	# move to next line
-	output += "<br>"
-	
-	#for i in range(4):
-	#    if len(receipt_item[i]) < col_widths[i]:
-	#	output += receipt_item[i] + (col_widths[i]-len(receipt_item[i]))*'.'
-	#    else:
-	#	output += receipt_item[i][:col_widths[i]]
-	
-	print output
-	return output
-	
+        for i in range(4):
+            if len(receipt_item[i]) < col_widths[i]:
+                output += receipt_item[i] + (col_widths[i]-len(receipt_item[i]))*'.'
+            else:
+                output += receipt_item[i][:col_widths[i]]
+        return output
+    
     #---------------------------------------------------------------------
     def CalculateSubTotal(self, receipt_list):
         "Takes the amounts from a receipt and returns the subtotal."
