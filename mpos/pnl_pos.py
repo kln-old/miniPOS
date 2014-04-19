@@ -268,7 +268,7 @@ class POS_Panel(wx.Panel):
                 
                 if i % 2 == 0:
                     self.product_lc.SetItemBackgroundColour(i, wx.LIGHT_GREY)
-#            self.product_lc.Focus(0)
+            self.product_lc.Focus(0)
         
         except IndexError, e: # This occurs when the search bar is empty
             self.PListRefresh()    
@@ -359,8 +359,8 @@ class POS_Panel(wx.Panel):
         self.Total()
         
         # Reset the search bar
-#        self.search_bar.SetValue('')
-#        self.PListRefresh()
+        self.search_bar.SetValue('')
+        self.PListRefresh()
         
     #----------------------------------------------------------------------
     def OnRClick(self, evt):
