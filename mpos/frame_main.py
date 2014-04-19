@@ -36,6 +36,9 @@ import time
 import sqlite3
 
 idKeyF1 = wx.NewId()
+idAlt1  = wx.NewId()
+idAlt2  = wx.NewId()
+idAlt3  = wx.NewId()
 
 class MainFrame(wx.Frame):
     def __init__(self, parent, *args, **kwargs):
@@ -66,7 +69,11 @@ class MainFrame(wx.Frame):
         self.SetMenuBar(self.menu)
         
         accel_tbl = wx.AcceleratorTable(
-                                        [(wx.ACCEL_NORMAL, wx.WXK_F1, idKeyF1)]
+                                        [(wx.ACCEL_NORMAL, wx.WXK_F1, idKeyF1), 
+                                         (wx.ACCEL_ALT, ord('1'), idAlt1), 
+                                         (wx.ACCEL_ALT, ord('2'), idAlt2), 
+                                         (wx.ACCEL_ALT, ord('3'), idAlt3)
+                                         ]
                                         )
         self.SetAcceleratorTable(accel_tbl)
         
@@ -109,6 +116,9 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.OnButton)
         self.Bind(wx.EVT_MENU, self.OnMenu)
         self.Bind(wx.EVT_MENU, self.OnKeyF1, id=idKeyF1)
+        self.Bind(wx.EVT_MENU, self.OnKeyAlt1, id=idAlt1)
+        self.Bind(wx.EVT_MENU, self.OnKeyAlt2, id=idAlt2)
+        self.Bind(wx.EVT_MENU, self.OnKeyAlt3, id=idAlt3)
          
     #######################################################################
     def OnChange(self, evt):
@@ -313,3 +323,14 @@ class MainFrame(wx.Frame):
         elif self.notebook.GetCurrentPage() == self.inventory_page:
             self.inventory_page.OnSearchCancel(None)
         
+    #----------------------------------------------------------------------
+    def OnKeyAlt1(self, evt):
+        self.notebook.SetSelection(0)
+        
+    #----------------------------------------------------------------------
+    def OnKeyAlt2(self, evt):
+        self.notebook.SetSelection(1)
+        
+    #----------------------------------------------------------------------
+    def OnKeyAlt3(self, evt):
+        self.notebook.SetSelection(2)
